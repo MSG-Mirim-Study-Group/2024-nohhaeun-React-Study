@@ -13,6 +13,18 @@ function App(props) {
     setTasks([...tasks, newTask]);
   }
 
+  function editTask(id, newName) {
+    const editedTaskList = tasks.map((task) => {
+      // 이 할 일이 편집된 작업과 동일한 ID를 갖는 경우
+      if (id === task.id) {
+        //
+        return { ...task, name: newName };
+      }
+      return task;
+    });
+    setTasks(editedTaskList);
+  }
+
   function toggleTaskCompleted(id) {
     const updatedTasks = tasks.map((task) => {
       // 만약 이 할 일이 수정된 할 일로부터 같은 id를 가지고 있다면
