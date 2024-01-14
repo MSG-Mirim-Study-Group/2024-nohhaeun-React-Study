@@ -50,6 +50,7 @@ function App(props) {
       key={task.id}
       toggleTaskCompleted={toggleTaskCompleted}
       deleteTask={deleteTask}
+      editTask={editTask}
     /> 
   ));
   const btnNameList = props.buttons.map((btn) => (
