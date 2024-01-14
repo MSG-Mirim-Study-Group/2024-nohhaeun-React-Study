@@ -52,7 +52,10 @@ function App(props) {
     setTasks(remainingTasks);
   }
 
-  const taskList = tasks.map((task) => ( 
+  // filter 상태의 키에 해당하는 FILTER_MAP의 값에 접근
+  const taskList = tasks
+    .filter(FILTER_MAP[filter])
+    .map((task) => ( 
     <Todo 
       id={task.id}
       name={task.name}
@@ -77,7 +80,7 @@ function App(props) {
   const headingText = `${taskList.length} ${tasksNoun} remaining`;
   return (
     <div className="todo app stack-large">
-      <h1>{props.name} 컴포넌트화 완성</h1>
+      <h1>{props.name} 필터링 완성</h1>
       <Form addTask={addTask}/>
       <div className="filters btn-group stack-exception">
         {filterList}
