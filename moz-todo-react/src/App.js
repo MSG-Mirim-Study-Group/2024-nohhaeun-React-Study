@@ -5,12 +5,24 @@ import FilterButton from "./components/FilterButton";
 import { nanoid } from "nanoid";
 
 function App(props) {
-  const [tasks, setTasks] = useState(props.tasks);
+  const [tasks, setTasks] = useState(props.tasks); 
 
   function addTask(name) {
     console.log(`todo-${nanoid()}`);
     const newTask = { id: `todo-${nanoid()}`, name, completed: false };
     setTasks([...tasks, newTask]);
+  }
+
+  function editTask(id, newName) {
+    const editedTaskList = tasks.map((task) => {
+      // 이 할 일이 편집된 작업과 동일한 ID를 갖는 경우
+      if (id === task.id) {
+        //
+        return { ...task, name: newName };
+      }
+      return task;
+    });
+    setTasks(editedTaskList);
   }
 
   function toggleTaskCompleted(id) {
@@ -38,6 +50,7 @@ function App(props) {
       key={task.id}
       toggleTaskCompleted={toggleTaskCompleted}
       deleteTask={deleteTask}
+      editTask={editTask}
     /> 
   ));
   const btnNameList = props.buttons.map((btn) => (
