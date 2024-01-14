@@ -2,14 +2,34 @@ import React, { useState } from "react";
 
 function Todo(props) {
     const [isEditing, setEditing] = useState(false);
+    const [newName, setNewName] = useState("");// 새 이름 저장 및 설정 
+
+    // 새 이름 설정 
+    function handleChange(e) {
+        setNewName(e.target.value);
+    }
+
+    // onSubmit 이벤트 처리 함수 
+    function handleSubmit(e) {
+        e.preventDefault();
+        props.editTask(props.id, newName);
+        setNewName("");
+        setEditing(false);
+    }
 
     const editingTemplate = (
-        <form className="stack-small">
+        <form className="stack-small" onSubmit={handleSubmit}>
             <div className="form-group">
                 <label className="todo-label" htmlFor={props.id}>
                     {props.name}의 새로운 이름
                 </label>
-                <input id={props.id} className="todo-text" type="text" />
+                <input
+                    id={props.id}
+                    className="todo-text"
+                    type="text"
+                    value={newName}
+                    onChange={handleChange}
+                />
             </div>
             <div className="btn-group">
                 {/* 취소 버튼을 누르면 이전 상태 그대로 복원 */}

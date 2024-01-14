@@ -5,7 +5,7 @@ import FilterButton from "./components/FilterButton";
 import { nanoid } from "nanoid";
 
 function App(props) {
-  const [tasks, setTasks] = useState(props.tasks);
+  const [tasks, setTasks] = useState(props.tasks); 
 
   function addTask(name) {
     console.log(`todo-${nanoid()}`);
