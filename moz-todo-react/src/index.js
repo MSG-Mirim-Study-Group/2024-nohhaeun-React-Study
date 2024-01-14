@@ -9,16 +9,10 @@ const DATA = [
   { id: "todo-2", name: "Repeat", completed: false }
 ];
 
-const BTN = [
-  { id: "btn-0", name: "All" },
-  { id: "btn-1", name: "Active" },
-  { id: "btn-2", name: "Completed" }
-];
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App name="노하은" tasks={DATA} buttons={BTN}/>
+    <App name="노하은" tasks={DATA} />
   </React.StrictMode>
 );
 
